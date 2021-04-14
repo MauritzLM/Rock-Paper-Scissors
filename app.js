@@ -1,23 +1,34 @@
-
-let userScore = 0;
-let computerScore = 0;
-
-
-
+let userScore;
+let computerScore;
+let playerSelection;
+let computerSelection;
 
 function game() {
+    userScore = 0;
+    computerScore = 0;
     for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt('Rock, Paper or Scissors: ');
-        let computerSelection = computerPlay();
-        playRound();
+        playRound()
 
-    } return result();
+    } return result()
+}
+
+function computerPlay() {
+    let roll = Math.floor(Math.random() * 3) + 1;
+    if (roll === 1) {
+        return 'rock'
+    } else if (roll === 2) {
+        return 'paper'
+    } else {
+        return 'scissors'
+    }
 }
 
 function playRound(playerSelection, computerSelection) {
+    playerSelection = (prompt('Rock, Paper or Scissors: '));
+    computerSelection = computerPlay();
     if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        userScore++
         console.log('You win this round! Rock beats Scissors')
+        userScore++
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         computerScore++
         console.log('You lose this round! Rock beats Scissors')
@@ -38,17 +49,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function computerPlay() {
-    let roll = Math.floor(Math.random() * 3) + 1;
-    if (roll === 1) {
-        return 'rock'
-    } else if (roll === 2) {
-        return 'paper'
-    } else {
-        return 'scissors'
-    }
-}
-
 function result() {
     if (userScore > computerScore) {
         return 'You win the game!'
@@ -58,7 +58,5 @@ function result() {
         return `It's a tie!`
     }
 }
-
-
 
 
